@@ -86,6 +86,7 @@
                     <connections>
                         <outlet property="logoConstraint" destination="nQj-tB-6Hr" id="dOP-gI-q4G"/>
                         <outlet property="logoImageView" destination="bQz-yA-9Hc" id="6bK-3p-Tp2"/>
+                        <outlet property="secretStatusView" destination="duP-gZ-g0M" id="Ocd-GW-6lH"/>
                         <outlet property="secretTextfield" destination="KjZ-05-Xlu" id="3m5-Kp-bfb"/>
                         <outlet property="signinButton" destination="xaa-sO-htc" id="eQk-vh-dn9"/>
                         <outlet property="signinFormView" destination="rwL-gz-Ctp" id="iPr-Ji-5gU"/>

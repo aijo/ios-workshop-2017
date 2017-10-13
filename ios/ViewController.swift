@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var signinFormView: UIView!
     @IBOutlet weak var secretTextfield: UITextField!
+    @IBOutlet weak var secretStatusView: UIView!
     @IBOutlet weak var signinButton: UIButton!
     
     private let LOGO_DEFAULT_CONSTRAINT:CGFloat = 40
@@ -61,9 +62,20 @@ class ViewController: UIViewController {
     @IBAction func signButtonDidPressed(_ sender: Any) {
         if let secret = secretTextfield.text {
             if secret == "secret" {
+                secretStatusView.backgroundColor = UIColor.init(rgba: "#E2E2E2")
                 self.performSegue(withIdentifier: "gotoMain", sender: nil)
+            } else {
+                secretStatusView.backgroundColor = UIColor.init(rgba: "#AA3939")
+                shakeView(shakeView: signinFormView)
             }
         }
+    }
+    
+    fileprivate func shakeView(shakeView: UIView) {
+        shakeView.transform = CGAffineTransform(translationX: 20, y: 0)
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+            shakeView.transform = CGAffineTransform.identity
+        }, completion: nil)
     }
 }
 
