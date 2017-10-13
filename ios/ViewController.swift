@@ -13,6 +13,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var logoConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var signinFormView: UIView!
+    @IBOutlet weak var secretTextfield: UITextField!
+    @IBOutlet weak var signinButton: UIButton!
+    
     private let LOGO_DEFAULT_CONSTRAINT:CGFloat = 40
     private let LOGO_HEIGHT:CGFloat = 100
     
@@ -20,6 +24,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        signinFormView.alpha = 0
+        signinButton.layer.cornerRadius = 5
         logoConstraint.constant = view.center.y-(LOGO_HEIGHT/2)
     }
     
@@ -31,6 +37,9 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
         }, completion: nil)
         
+        UIView.animate(withDuration: 2.0) {
+            self.signinFormView.alpha = 1
+        }
     }
 
     override func didReceiveMemoryWarning() {
