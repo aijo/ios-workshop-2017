@@ -58,6 +58,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func signButtonDidPressed(_ sender: Any) {
+        if let secret = secretTextfield.text {
+            if secret == "secret" {
+                self.performSegue(withIdentifier: "gotoMain", sender: nil)
+            }
+        }
+    }
 }
 
 @objc extension ViewController: UITextFieldDelegate {
