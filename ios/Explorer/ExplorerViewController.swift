@@ -9,10 +9,13 @@
 import UIKit
 
 class ExplorerViewController: UITableViewController {
-
+    
+    private var explorerList: [ExplorerSection]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Explorer"
+        prepareData()
         
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -25,28 +28,41 @@ class ExplorerViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    fileprivate func prepareData() {
+        explorerList = [
+            ExplorerSection(sectionTitle: "Section1"),
+            ExplorerSection(sectionTitle: "Section2"),
+            ExplorerSection(sectionTitle: "Section3")
+        ]
+        
+        for i in 4...20 {
+            explorerList?.append(ExplorerSection(sectionTitle: "Section\(i)"))
+        }
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        if let size = explorerList?.count {
+            return size
+        }
         return 0
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExplorerCell", for: indexPath)
 
         // Configure the cell...
+        let item = explorerList![indexPath.row]
+        cell.textLabel?.text = item.sectionTitle
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
