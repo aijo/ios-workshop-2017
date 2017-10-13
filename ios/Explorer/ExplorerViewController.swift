@@ -15,13 +15,13 @@ class ExplorerViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Explorer"
-        prepareData()
         
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
-        } else {
-            // Fallback on earlier versions
         }
+        
+        self.tableView.register(ExplorerTableViewCell.self, forCellReuseIdentifier: "ExplorerCell")
+        prepareData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,15 +30,14 @@ class ExplorerViewController: UITableViewController {
     }
     
     fileprivate func prepareData() {
-        explorerList = [
-            ExplorerSection(sectionTitle: "Section1"),
-            ExplorerSection(sectionTitle: "Section2"),
-            ExplorerSection(sectionTitle: "Section3")
-        ]
+        let item = ExplorerItem(title: "Title", imageURL: "")
+        let items = Array(repeating: item, count: 3)
         
-        for i in 4...20 {
-            explorerList?.append(ExplorerSection(sectionTitle: "Section\(i)"))
-        }
+        explorerList = [
+            ExplorerSection(sectionTitle: "Section1", explorerItems: items),
+            ExplorerSection(sectionTitle: "Section2", explorerItems: items),
+            ExplorerSection(sectionTitle: "Section3", explorerItems: items)
+        ]
     }
 
     // MARK: - Table view data source
@@ -55,13 +54,13 @@ class ExplorerViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExplorerCell", for: indexPath)
-
-        // Configure the cell...
-        let item = explorerList![indexPath.row]
-        cell.textLabel?.text = item.sectionTitle
-
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "ExplorerCell", for: indexPath) as? ExplorerTableViewCell {
+            let item = explorerList![indexPath.row]
+            cell.sectionNameLabel.text = item.sectionTitle
+            return cell
+        }
+        
+        return UITableViewCell()
     }
 
     /*

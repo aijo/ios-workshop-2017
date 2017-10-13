@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C81417971F9111110064C5BC /* ExplorerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81417961F9111110064C5BC /* ExplorerTableViewCell.swift */; };
+		C81417991F9111B60064C5BC /* ExplorerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81417981F9111B60064C5BC /* ExplorerCollectionCell.swift */; };
 		C82F5A971F9073FE002079F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F5A961F9073FE002079F3 /* AppDelegate.swift */; };
 		C82F5A991F9073FE002079F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F5A981F9073FE002079F3 /* ViewController.swift */; };
 		C82F5A9C1F9073FE002079F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82F5A9A1F9073FE002079F3 /* Main.storyboard */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C81417961F9111110064C5BC /* ExplorerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerTableViewCell.swift; sourceTree = "<group>"; };
+		C81417981F9111B60064C5BC /* ExplorerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerCollectionCell.swift; sourceTree = "<group>"; };
 		C82F5A931F9073FE002079F3 /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82F5A961F9073FE002079F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C82F5A981F9073FE002079F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +153,8 @@
 			children = (
 				C82F5ACC1F90FB61002079F3 /* ExplorerViewController.swift */,
 				C82F5ACE1F9109B3002079F3 /* ExplorerSection.swift */,
+				C81417961F9111110064C5BC /* ExplorerTableViewCell.swift */,
+				C81417981F9111B60064C5BC /* ExplorerCollectionCell.swift */,
 			);
 			path = Explorer;
 			sourceTree = "<group>";
@@ -288,8 +294,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C82F5A991F9073FE002079F3 /* ViewController.swift in Sources */,
+				C81417971F9111110064C5BC /* ExplorerTableViewCell.swift in Sources */,
 				C82F5A971F9073FE002079F3 /* AppDelegate.swift in Sources */,
 				C82F5ACF1F9109B3002079F3 /* ExplorerSection.swift in Sources */,
+				C81417991F9111B60064C5BC /* ExplorerCollectionCell.swift in Sources */,
 				C82F5AC61F90914B002079F3 /* UIButtonExtension.swift in Sources */,
 				C82F5AC81F90918E002079F3 /* UIColorExtension.swift in Sources */,
 				C82F5ACD1F90FB61002079F3 /* ExplorerViewController.swift in Sources */,

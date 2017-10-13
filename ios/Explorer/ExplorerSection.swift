@@ -10,4 +10,10 @@ import Foundation
 
 struct ExplorerSection {
     let sectionTitle: String
+    let explorerItems: [ExplorerItem]
+}
+
+struct ExplorerItem {
+    let title: String
+    let imageURL: String
 }
