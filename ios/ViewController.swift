@@ -29,11 +29,11 @@ class ViewController: UIViewController {
         signinButton.layer.masksToBounds = true
         logoConstraint.constant = view.center.y-(LOGO_HEIGHT/2)
         
-        let dismissGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
+        let dismissGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(dismissGesture)
         
         secretTextfield.delegate = self
-        secretTextfield.addTarget(self, action: #selector(ViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        secretTextfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
         
         signinButton.isEnabled = false
         signinButton.setBackgroundColor(color: UIColor.init(rgba: "#2EB0FC"), forState: .normal)
@@ -57,16 +57,16 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
 
 }
 
-extension ViewController: UITextFieldDelegate {
+@objc extension ViewController: UITextFieldDelegate {
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
+    fileprivate func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    fileprivate func textFieldDidChange(_ textField: UITextField) {
         if let secret = secretTextfield.text {
             signinButton.isEnabled = secret.characters.count > 0
         }
