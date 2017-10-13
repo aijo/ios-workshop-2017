@@ -27,6 +27,9 @@ class ViewController: UIViewController {
         signinFormView.alpha = 0
         signinButton.layer.cornerRadius = 5
         logoConstraint.constant = view.center.y-(LOGO_HEIGHT/2)
+        
+        let dismissGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
+        view.addGestureRecognizer(dismissGesture)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,7 +49,10 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 
 }
 
