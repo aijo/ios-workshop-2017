@@ -16,6 +16,7 @@
 		C82F5AB71F9073FE002079F3 /* iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F5AB61F9073FE002079F3 /* iosUITests.swift */; };
 		C82F5AC61F90914B002079F3 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F5AC51F90914B002079F3 /* UIButtonExtension.swift */; };
 		C82F5AC81F90918E002079F3 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F5AC71F90918E002079F3 /* UIColorExtension.swift */; };
+		C82F5ACD1F90FB61002079F3 /* ExplorerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F5ACC1F90FB61002079F3 /* ExplorerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		C82F5AB81F9073FE002079F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C82F5AC51F90914B002079F3 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		C82F5AC71F90918E002079F3 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		C82F5ACC1F90FB61002079F3 /* ExplorerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				C82F5A961F9073FE002079F3 /* AppDelegate.swift */,
 				C82F5A981F9073FE002079F3 /* ViewController.swift */,
 				C82F5AC41F909120002079F3 /* Extensions */,
+				C82F5AC91F90FAB5002079F3 /* Explorer */,
 				C82F5A9A1F9073FE002079F3 /* Main.storyboard */,
 				C82F5A9D1F9073FE002079F3 /* Assets.xcassets */,
 				C82F5A9F1F9073FE002079F3 /* LaunchScreen.storyboard */,
@@ -137,6 +140,14 @@
 				C82F5AC71F90918E002079F3 /* UIColorExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C82F5AC91F90FAB5002079F3 /* Explorer */ = {
+			isa = PBXGroup;
+			children = (
+				C82F5ACC1F90FB61002079F3 /* ExplorerViewController.swift */,
+			);
+			path = Explorer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +288,7 @@
 				C82F5A971F9073FE002079F3 /* AppDelegate.swift in Sources */,
 				C82F5AC61F90914B002079F3 /* UIButtonExtension.swift in Sources */,
 				C82F5AC81F90918E002079F3 /* UIColorExtension.swift in Sources */,
+				C82F5ACD1F90FB61002079F3 /* ExplorerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +456,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ios/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.aijo.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -458,6 +471,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ios/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.aijo.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
