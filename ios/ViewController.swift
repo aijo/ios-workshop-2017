@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     
     private let LOGO_DEFAULT_CONSTRAINT:CGFloat = 40
     private let LOGO_HEIGHT:CGFloat = 100
+    private let LOGGED_IN:String = "LOGGED_IN"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,13 +45,17 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        logoConstraint.constant = LOGO_DEFAULT_CONSTRAINT
-        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 3.0, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 2.0) {
-            self.signinFormView.alpha = 1
+        if UserDefaults.standard.bool(forKey: LOGGED_IN) {
+            loggedIn()
+        } else {
+            logoConstraint.constant = LOGO_DEFAULT_CONSTRAINT
+            UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 3.0, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+            
+            UIView.animate(withDuration: 2.0) {
+                self.signinFormView.alpha = 1
+            }
         }
     }
 
@@ -63,12 +68,17 @@ class ViewController: UIViewController {
         if let secret = secretTextfield.text {
             if secret == "secret" {
                 secretStatusView.backgroundColor = UIColor.init(rgba: "#E2E2E2")
-                self.performSegue(withIdentifier: "gotoMain", sender: nil)
+                loggedIn()
             } else {
                 secretStatusView.backgroundColor = UIColor.init(rgba: "#AA3939")
                 shakeView(shakeView: signinFormView)
             }
         }
+    }
+    
+    fileprivate func loggedIn() {
+        UserDefaults.standard.set(true, forKey: LOGGED_IN)
+        self.performSegue(withIdentifier: "gotoMain", sender: nil)
     }
     
     fileprivate func shakeView(shakeView: UIView) {
