@@ -26,10 +26,18 @@ class ViewController: UIViewController {
         
         signinFormView.alpha = 0
         signinButton.layer.cornerRadius = 5
+        signinButton.layer.masksToBounds = true
         logoConstraint.constant = view.center.y-(LOGO_HEIGHT/2)
         
         let dismissGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
         view.addGestureRecognizer(dismissGesture)
+        
+        secretTextfield.delegate = self
+        secretTextfield.addTarget(self, action: #selector(ViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        
+        signinButton.isEnabled = false
+        signinButton.setBackgroundColor(color: UIColor.init(rgba: "#2EB0FC"), forState: .normal)
+        signinButton.setBackgroundColor(color: UIColor.init(rgba: "#EEEEEE"), forState: .disabled)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,3 +64,12 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController: UITextFieldDelegate {
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if let secret = secretTextfield.text {
+            signinButton.isEnabled = secret.characters.count > 0
+        }
+    }
+    
+}
