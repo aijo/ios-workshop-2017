@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         signinFormView.alpha = 0
         signinButton.layer.cornerRadius = 5
         signinButton.layer.masksToBounds = true
-        logoConstraint.constant = view.center.y-(LOGO_HEIGHT/2)
+        logoConstraint.constant = view.center.y-(LOGO_HEIGHT/2)-UIApplication.shared.statusBarFrame.height
         
         let dismissGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(dismissGesture)
