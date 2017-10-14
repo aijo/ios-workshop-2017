@@ -38,7 +38,7 @@ class ExplorerViewController: UITableViewController {
     }
     
     fileprivate func loadFeedData(username: String) {
-        service.getInstagramFeed(user: username) { (feed, error) in
+        service.getInstagramFeed(user: username) { [unowned self] (feed, error) in
             let explorerItems = feed?.items?.map({ (item) -> ExplorerItem in
                 ExplorerItem(title: item.caption, imageURL: item.imageUrl)
             })
@@ -144,7 +144,7 @@ extension ExplorerViewController: UICollectionViewDelegate, UICollectionViewData
             cell.titleLabel.text = explorerItem.title
             if let image = explorerItem.imageURL {
                 service.getImage(imageUrl: image, downloadProgress: { (progress) in
-                    print(progress)
+                    //print(progress)
                 }) { (image, error) in
                     cell.imageView.image = image
                 }
