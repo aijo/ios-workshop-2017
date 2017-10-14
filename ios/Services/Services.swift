@@ -20,7 +20,8 @@ class Services {
         Alamofire.request(mediaEndpoint, method: .get, parameters: nil).responseData { (response) in
             switch response.result {
             case .success(let data):
-                let feed = try! self.jsonDecoder.decode(Feed.self, from: data)
+                var feed = try! self.jsonDecoder.decode(Feed.self, from: data)
+                feed.username = user
                 completion(feed, nil)
             case .failure(let error):
                 print("Request failed with error: \(error)")

@@ -10,11 +10,11 @@ import UIKit
 
 class FeedViewController: UITableViewController {
     
-    var explorer: ExplorerSection?
+    var feed: Feed?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = explorer?.sectionTitle
+        self.title = feed?.username
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

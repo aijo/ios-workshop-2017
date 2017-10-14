@@ -10,7 +10,7 @@ import UIKit
 
 class ExplorerViewController: UITableViewController {
     
-    private var explorerList: [ExplorerSection]?
+    private var feeds: [Feed]?
     private var storedOffsets = [Int: CGFloat]()
     private let service = Services()
     
@@ -32,19 +32,17 @@ class ExplorerViewController: UITableViewController {
     }
     
     fileprivate func prepareData() {
-        explorerList = [ExplorerSection]()
+        feeds = [Feed]()
         loadFeedData(username: "apple")
         loadFeedData(username: "aijojoe")
     }
     
     fileprivate func loadFeedData(username: String) {
         service.getInstagramFeed(user: username) { [unowned self] (feed, error) in
-            let explorerItems = feed?.items?.map({ (item) -> ExplorerItem in
-                ExplorerItem(title: item.caption, imageURL: item.imageUrl)
-            })
-            
-            self.explorerList?.append(ExplorerSection(sectionTitle: "Highlight of \(username)", explorerItems: explorerItems))
-            self.tableView.reloadData()
+            if let feed = feed {
+                self.feeds?.append(feed)
+                self.tableView.reloadData()
+            }
         }
     }
 
@@ -55,7 +53,7 @@ class ExplorerViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let size = explorerList?.count {
+        if let size = feeds?.count {
             return size
         }
         return 0
@@ -63,8 +61,8 @@ class ExplorerViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ExplorerCell", for: indexPath) as? ExplorerTableViewCell {
-            let item = explorerList![indexPath.row]
-            cell.sectionNameLabel.text = item.sectionTitle
+            let item = feeds![indexPath.row]
+            cell.sectionNameLabel.text = "Hilight of \(item.username!)"
             cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
             cell.collectionViewOffset = storedOffsets[indexPath.row] ?? 0
             return cell
@@ -79,8 +77,8 @@ class ExplorerViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let item = explorerList?[indexPath.row] {
-            self.performSegue(withIdentifier: "gotoFeed", sender: item)
+        if let feed = feeds?[indexPath.row] {
+            self.performSegue(withIdentifier: "gotoFeed", sender: feed)
         }
     }
     
@@ -89,8 +87,8 @@ class ExplorerViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoFeed" {
             if let feedViewController = segue.destination as? FeedViewController {
-                if let explorer = sender as? ExplorerSection {
-                    feedViewController.explorer = explorer
+                if let feed = sender as? Feed {
+                    feedViewController.feed = feed
                 }
             }
         }
@@ -104,18 +102,18 @@ extension ExplorerViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let index = collectionView.tag
-        if let explorerItems = self.explorerList?[index].explorerItems {
-            return explorerItems.count
+        if let feeds = self.feeds?[index].items {
+            return feeds.count
         }
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let index = collectionView.tag
-        if let explorerItem = self.explorerList?[index].explorerItems?[indexPath.row] {
+        if let item = self.feeds?[index].items?[indexPath.row] {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExplorerCollectionCell", for: indexPath) as! ExplorerCollectionCell
-            cell.titleLabel.text = explorerItem.title
-            if let image = explorerItem.imageURL {
+            cell.titleLabel.text = item.caption
+            if let image = item.imageUrl {
                 service.getImage(imageUrl: image, downloadProgress: { (progress) in
                     //print(progress)
                 }) { (image, error) in

@@ -20,7 +20,6 @@
 		C82F5AC61F90914B002079F3 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F5AC51F90914B002079F3 /* UIButtonExtension.swift */; };
 		C82F5AC81F90918E002079F3 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F5AC71F90918E002079F3 /* UIColorExtension.swift */; };
 		C82F5ACD1F90FB61002079F3 /* ExplorerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F5ACC1F90FB61002079F3 /* ExplorerViewController.swift */; };
-		C82F5ACF1F9109B3002079F3 /* ExplorerSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F5ACE1F9109B3002079F3 /* ExplorerSection.swift */; };
 		C8489AFD1F91E9CB00DE1630 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8489AFC1F91E9CB00DE1630 /* FeedViewController.swift */; };
 		C87AB18B1F91BA210010DA00 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87AB18A1F91BA210010DA00 /* Services.swift */; };
 		C87AB18E1F91BAC40010DA00 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87AB18D1F91BAC40010DA00 /* Feed.swift */; };
@@ -71,7 +70,6 @@
 		C82F5AC51F90914B002079F3 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		C82F5AC71F90918E002079F3 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		C82F5ACC1F90FB61002079F3 /* ExplorerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerViewController.swift; sourceTree = "<group>"; };
-		C82F5ACE1F9109B3002079F3 /* ExplorerSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerSection.swift; sourceTree = "<group>"; };
 		C8489AFC1F91E9CB00DE1630 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		C87AB18A1F91BA210010DA00 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		C87AB18D1F91BAC40010DA00 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
@@ -198,7 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				C82F5ACC1F90FB61002079F3 /* ExplorerViewController.swift */,
-				C82F5ACE1F9109B3002079F3 /* ExplorerSection.swift */,
 				C81417961F9111110064C5BC /* ExplorerTableViewCell.swift */,
 				C81417981F9111B60064C5BC /* ExplorerCollectionCell.swift */,
 			);
@@ -468,7 +465,6 @@
 				C87AB18E1F91BAC40010DA00 /* Feed.swift in Sources */,
 				C81417971F9111110064C5BC /* ExplorerTableViewCell.swift in Sources */,
 				C82F5A971F9073FE002079F3 /* AppDelegate.swift in Sources */,
-				C82F5ACF1F9109B3002079F3 /* ExplorerSection.swift in Sources */,
 				C81417991F9111B60064C5BC /* ExplorerCollectionCell.swift in Sources */,
 				C87AB1901F91BC720010DA00 /* Item.swift in Sources */,
 				C82F5AC61F90914B002079F3 /* UIButtonExtension.swift in Sources */,

@@ -10,5 +10,6 @@ import Foundation
 
 struct Feed: Codable {
     var status: String?
+    var username: String?
     var items: [Item]?
 }
