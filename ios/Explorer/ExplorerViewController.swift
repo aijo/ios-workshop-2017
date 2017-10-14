@@ -12,6 +12,7 @@ class ExplorerViewController: UITableViewController {
     
     private var explorerList: [ExplorerSection]?
     private var storedOffsets = [Int: CGFloat]()
+    private let service = Services()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +32,20 @@ class ExplorerViewController: UITableViewController {
     }
     
     fileprivate func prepareData() {
-        let item = ExplorerItem(title: "Title", imageURL: "")
-        let items = Array(repeating: item, count: 3)
-        
-        explorerList = [
-            ExplorerSection(sectionTitle: "Section1", explorerItems: items),
-            ExplorerSection(sectionTitle: "Section2", explorerItems: items),
-            ExplorerSection(sectionTitle: "Section3", explorerItems: items)
-        ]
+        explorerList = [ExplorerSection]()
+        loadFeedData(username: "apple")
+        loadFeedData(username: "aijojoe")
+    }
+    
+    fileprivate func loadFeedData(username: String) {
+        service.getInstagramFeed(user: username) { (feed, error) in
+            let explorerItems = feed?.items?.map({ (item) -> ExplorerItem in
+                ExplorerItem(title: item.caption, imageURL: item.imageUrl)
+            })
+            
+            self.explorerList?.append(ExplorerSection(sectionTitle: "Highlight of \(username)", explorerItems: explorerItems))
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
@@ -124,17 +131,20 @@ extension ExplorerViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let index = collectionView.tag
-        let explorerSection = self.explorerList![index]
-        return explorerSection.explorerItems.count
+        if let explorerItems = self.explorerList?[index].explorerItems {
+            return explorerItems.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let index = collectionView.tag
-        let explorerSection = self.explorerList![index]
-        let item = explorerSection.explorerItems[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExplorerCollectionCell", for: indexPath) as! ExplorerCollectionCell
-        cell.titleLabel.text = item.title
-        return cell
+        if let explorerItems = self.explorerList?[index].explorerItems?[indexPath.row] {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExplorerCollectionCell", for: indexPath) as! ExplorerCollectionCell
+            cell.titleLabel.text = explorerItems.title
+            return cell
+        }
+        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

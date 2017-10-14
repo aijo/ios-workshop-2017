@@ -10,10 +10,10 @@ import Foundation
 
 struct ExplorerSection {
     let sectionTitle: String
-    let explorerItems: [ExplorerItem]
+    let explorerItems: [ExplorerItem]?
 }
 
 struct ExplorerItem {
-    let title: String
-    let imageURL: String
+    let title: String?
+    let imageURL: String?
 }
