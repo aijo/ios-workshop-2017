@@ -139,9 +139,17 @@ extension ExplorerViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let index = collectionView.tag
-        if let explorerItems = self.explorerList?[index].explorerItems?[indexPath.row] {
+        if let explorerItem = self.explorerList?[index].explorerItems?[indexPath.row] {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExplorerCollectionCell", for: indexPath) as! ExplorerCollectionCell
-            cell.titleLabel.text = explorerItems.title
+            cell.titleLabel.text = explorerItem.title
+            if let image = explorerItem.imageURL {
+                service.getImage(imageUrl: image, downloadProgress: { (progress) in
+                    print(progress)
+                }) { (image, error) in
+                    cell.imageView.image = image
+                }
+            }
+
             return cell
         }
         return UICollectionViewCell()
