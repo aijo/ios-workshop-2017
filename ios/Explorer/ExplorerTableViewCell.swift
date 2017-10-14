@@ -42,6 +42,7 @@ class ExplorerTableViewCell: UITableViewCell {
     }()
     
     func setupView(){
+        selectionStyle = .none
         contentView.backgroundColor = UIColor.clear
         addSubview(itemsCollectionView)
         addSubview(sectionNameLabel)
