@@ -11,13 +11,18 @@ import UIKit
 class FeedViewController: UITableViewController {
     
     var feed: Feed?
-    private var lastMaxId: String?
+    var items = [Item]()
+    var cacheHeight = [Int:CGFloat]()
+    
     private let service = Services.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = feed?.username
-        lastMaxId = feed?.items?.last?.id
+        
+        if let items = feed?.items {
+            self.items.append(contentsOf: items)
+        }
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 500
@@ -30,11 +35,17 @@ class FeedViewController: UITableViewController {
     
     fileprivate func loadFeedData() {
         if let username = feed?.username {
+            let lastMaxId = items.last?.id
             service.getInstagramFeed(user: username, maxId: lastMaxId) { [unowned self] (feed, error) in
-                if let items = feed?.items {
-                    self.lastMaxId = items.last?.id
-                    self.feed?.items?.append(contentsOf: items)
-                    self.tableView.reloadData()
+                if let newItems = feed?.items {
+                    let currentSize = self.items.count
+                    self.items.append(contentsOf: newItems)
+                    
+                    var indexPaths = [IndexPath]()
+                    for i in currentSize...self.items.count-1 {
+                        indexPaths.append(IndexPath.init(row: i, section: 0))
+                    }
+                    self.tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.none)
                 }
             }
         }
@@ -47,23 +58,21 @@ class FeedViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let items = feed?.items {
-            return items.count
-        }
-        return 0
+        return items.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "FeedCell", for: indexPath) as? FeedTableViewCell {
-            if let item = feed?.items?[indexPath.row] {
-                cell.setupCell(item: item)
-            }
+            cell.setupCell(item: items[indexPath.row])
             return cell
         }
         return UITableViewCell()
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let height = cacheHeight[indexPath.row] {
+            return height
+        }
         return UITableViewAutomaticDimension
     }
     
@@ -72,11 +81,11 @@ class FeedViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let items = feed?.items {
-            let lastElement = items.count - 1
-            if indexPath.row == lastElement {
-                loadFeedData()
-            }
+        cacheHeight[indexPath.row] = cell.frame.size.height
+        
+        let lastElement = items.count - 1
+        if indexPath.row == lastElement {
+            loadFeedData()
         }
     }
 
