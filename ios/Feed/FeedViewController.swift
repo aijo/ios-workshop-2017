@@ -11,10 +11,13 @@ import UIKit
 class FeedViewController: UITableViewController {
     
     var feed: Feed?
+    private var lastMaxId: String?
+    private let service = Services.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = feed?.username
+        lastMaxId = feed?.items?.last?.id
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 500
@@ -23,6 +26,18 @@ class FeedViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    fileprivate func loadFeedData() {
+        if let username = feed?.username {
+            service.getInstagramFeed(user: username, maxId: lastMaxId) { [unowned self] (feed, error) in
+                if let items = feed?.items {
+                    self.lastMaxId = items.last?.id
+                    self.feed?.items?.append(contentsOf: items)
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -54,6 +69,15 @@ class FeedViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let items = feed?.items {
+            let lastElement = items.count - 1
+            if indexPath.row == lastElement {
+                loadFeedData()
+            }
+        }
     }
 
 }
