@@ -11,6 +11,7 @@ import UIKit
 class ExplorerViewController: UITableViewController {
     
     private var explorerList: [ExplorerSection]?
+    private var storedOffsets = [Int: CGFloat]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,10 +58,17 @@ class ExplorerViewController: UITableViewController {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ExplorerCell", for: indexPath) as? ExplorerTableViewCell {
             let item = explorerList![indexPath.row]
             cell.sectionNameLabel.text = item.sectionTitle
+            cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
+            cell.collectionViewOffset = storedOffsets[indexPath.row] ?? 0
             return cell
         }
         
         return UITableViewCell()
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let tableViewCell = cell as? ExplorerTableViewCell else { return }
+        storedOffsets[indexPath.row] = tableViewCell.collectionViewOffset
     }
 
     /*
@@ -109,3 +117,29 @@ class ExplorerViewController: UITableViewController {
     */
 
 }
+
+extension ExplorerViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    // MARK: - Collections view data source
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let index = collectionView.tag
+        let explorerSection = self.explorerList![index]
+        return explorerSection.explorerItems.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let index = collectionView.tag
+        let explorerSection = self.explorerList![index]
+        let item = explorerSection.explorerItems[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExplorerCollectionCell", for: indexPath) as! ExplorerCollectionCell
+        cell.titleLabel.text = item.title
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let h = collectionView.frame.height - 10
+        return CGSize(width: 324/2, height: h)
+    }
+}
+
