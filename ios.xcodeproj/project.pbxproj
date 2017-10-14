@@ -26,6 +26,7 @@
 		C87AB18E1F91BAC40010DA00 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87AB18D1F91BAC40010DA00 /* Feed.swift */; };
 		C87AB1901F91BC720010DA00 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87AB18F1F91BC720010DA00 /* Item.swift */; };
 		C87AB1921F91CD3F0010DA00 /* AnyJSONType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87AB1911F91CD3F0010DA00 /* AnyJSONType.swift */; };
+		C8FAE9CD1F926E490035185B /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FAE9CC1F926E490035185B /* DateHelper.swift */; };
 		CE5E2647A5AF106DF7D0A7D3 /* Pods_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56982D09A260F0C4A7222D7F /* Pods_iosTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		C87AB18D1F91BAC40010DA00 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		C87AB18F1F91BC720010DA00 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C87AB1911F91CD3F0010DA00 /* AnyJSONType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyJSONType.swift; sourceTree = "<group>"; };
+		C8FAE9CC1F926E490035185B /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				C82F5AC51F90914B002079F3 /* UIButtonExtension.swift */,
 				C82F5AC71F90918E002079F3 /* UIColorExtension.swift */,
 				C87AB1911F91CD3F0010DA00 /* AnyJSONType.swift */,
+				C8FAE9CC1F926E490035185B /* DateHelper.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				C87AB18E1F91BAC40010DA00 /* Feed.swift in Sources */,
 				C81417971F9111110064C5BC /* ExplorerTableViewCell.swift in Sources */,
 				C82F5A971F9073FE002079F3 /* AppDelegate.swift in Sources */,
+				C8FAE9CD1F926E490035185B /* DateHelper.swift in Sources */,
 				C81417991F9111B60064C5BC /* ExplorerCollectionCell.swift in Sources */,
 				C87AB1901F91BC720010DA00 /* Item.swift in Sources */,
 				C82F5AC61F90914B002079F3 /* UIButtonExtension.swift in Sources */,

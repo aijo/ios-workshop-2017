@@ -19,6 +19,7 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var dateTimeLabel: UILabel!
     
     private let USER_IMAGE_SIZE:CGFloat = 35
+    private let service = Services.sharedInstance
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +36,28 @@ class FeedTableViewCell: UITableViewCell {
         locationLabel.text = item.location ?? ""
         contentLabel.text = item.caption ?? ""
         likeLabel.text = "♥ \(item.likes ?? 0)"
+        
+        if let date = item.datetime {
+            dateTimeLabel.text = date.toStringWithRelativeTime()
+        }
+        
+        userImageView.image = nil
+        if let avatar = item.avatar {
+            service.getImage(imageUrl: avatar, downloadProgress: { (progress) in
+                //print(progress)
+            }) { (image, error) in
+                self.userImageView.image = image
+            }
+        }
+
+        photoImageView.image = nil
+        if let avatar = item.imageUrl {
+            service.getImage(imageUrl: avatar, downloadProgress: { (progress) in
+                //print(progress)
+            }) { (image, error) in
+                self.photoImageView.image = image
+            }
+        }
     }
 
 }

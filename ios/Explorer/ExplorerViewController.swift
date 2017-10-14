@@ -12,8 +12,8 @@ class ExplorerViewController: UITableViewController {
     
     private var feeds: [Feed]?
     private var storedOffsets = [Int: CGFloat]()
-    private let service = Services()
-    
+    private let service = Services.sharedInstance
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Explorer"
@@ -62,7 +62,7 @@ class ExplorerViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ExplorerCell", for: indexPath) as? ExplorerTableViewCell {
             let item = feeds![indexPath.row]
-            cell.sectionNameLabel.text = "Hilight of \(item.username!)"
+            cell.sectionNameLabel.text = "Highlights of \(item.username!)"
             cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
             cell.collectionViewOffset = storedOffsets[indexPath.row] ?? 0
             return cell

@@ -11,6 +11,13 @@ import Alamofire
 
 class Services {
     
+    class var sharedInstance: Services {
+        struct Static {
+            static let instance: Services = Services()
+        }
+        return Static.instance
+    }
+    
     let jsonDecoder = JSONDecoder()
     typealias mediaCompletion = (_ feed: Feed?, _ error: Error?) -> Void
     
