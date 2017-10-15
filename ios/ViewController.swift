@@ -20,7 +20,6 @@ class ViewController: UIViewController {
     
     private let LOGO_DEFAULT_CONSTRAINT:CGFloat = 40
     private let LOGO_HEIGHT:CGFloat = 100
-    private let LOGGED_IN:String = "LOGGED_IN"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +77,7 @@ class ViewController: UIViewController {
     
     fileprivate func loggedIn() {
         UserDefaults.standard.set(true, forKey: LOGGED_IN)
+        secretTextfield.text = ""
         self.performSegue(withIdentifier: "gotoMain", sender: nil)
     }
     

@@ -28,6 +28,7 @@
 		C87AB1921F91CD3F0010DA00 /* AnyJSONType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87AB1911F91CD3F0010DA00 /* AnyJSONType.swift */; };
 		C8A012741F93109B00DC8154 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A012731F93109B00DC8154 /* CustomTabBarController.swift */; };
 		C8A012761F93136E00DC8154 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A012751F93136E00DC8154 /* AccountViewController.swift */; };
+		C8A012781F93190100DC8154 /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A012771F93190100DC8154 /* Contants.swift */; };
 		C8FAE9CD1F926E490035185B /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FAE9CC1F926E490035185B /* DateHelper.swift */; };
 		CE5E2647A5AF106DF7D0A7D3 /* Pods_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56982D09A260F0C4A7222D7F /* Pods_iosTests.framework */; };
 /* End PBXBuildFile section */
@@ -82,6 +83,7 @@
 		C87AB1911F91CD3F0010DA00 /* AnyJSONType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyJSONType.swift; sourceTree = "<group>"; };
 		C8A012731F93109B00DC8154 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		C8A012751F93136E00DC8154 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		C8A012771F93190100DC8154 /* Contants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contants.swift; sourceTree = "<group>"; };
 		C8FAE9CC1F926E490035185B /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,6 +161,7 @@
 			children = (
 				C82F5A961F9073FE002079F3 /* AppDelegate.swift */,
 				C82F5A981F9073FE002079F3 /* ViewController.swift */,
+				C8A012771F93190100DC8154 /* Contants.swift */,
 				C82F5AC41F909120002079F3 /* Extensions */,
 				C87AB1891F91BA0E0010DA00 /* Services */,
 				C87AB18C1F91BA690010DA00 /* Models */,
@@ -488,6 +491,7 @@
 				C82F5A971F9073FE002079F3 /* AppDelegate.swift in Sources */,
 				C8FAE9CD1F926E490035185B /* DateHelper.swift in Sources */,
 				C81417991F9111B60064C5BC /* ExplorerCollectionCell.swift in Sources */,
+				C8A012781F93190100DC8154 /* Contants.swift in Sources */,
 				C87AB1901F91BC720010DA00 /* Item.swift in Sources */,
 				C82F5AC61F90914B002079F3 /* UIButtonExtension.swift in Sources */,
 				C8A012741F93109B00DC8154 /* CustomTabBarController.swift in Sources */,

@@ -32,7 +32,12 @@ class AccountViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    @IBAction func logoutButtonDidPressed(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: LOGGED_IN)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
