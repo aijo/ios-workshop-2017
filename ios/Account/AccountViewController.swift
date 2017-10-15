@@ -23,16 +23,16 @@ class AccountViewController: UITableViewController {
             self.navigationController?.navigationBar.prefersLargeTitles = true
         }
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(navigateToAddAccount))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc fileprivate func navigateToAddAccount() {
+        self.performSegue(withIdentifier: "gotoAddAccount", sender: nil)
     }
     
     @IBAction func logoutButtonDidPressed(_ sender: Any) {

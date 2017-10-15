@@ -31,6 +31,7 @@
 		C8A012781F93190100DC8154 /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A012771F93190100DC8154 /* Contants.swift */; };
 		C8A0127A1F931A5100DC8154 /* AccountsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A012791F931A5100DC8154 /* AccountsManager.swift */; };
 		C8A0127C1F931D9700DC8154 /* AccountTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A0127B1F931D9700DC8154 /* AccountTableCell.swift */; };
+		C8A0127E1F931FF000DC8154 /* AddAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A0127D1F931FF000DC8154 /* AddAccountViewController.swift */; };
 		C8FAE9CD1F926E490035185B /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FAE9CC1F926E490035185B /* DateHelper.swift */; };
 		CE5E2647A5AF106DF7D0A7D3 /* Pods_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56982D09A260F0C4A7222D7F /* Pods_iosTests.framework */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 		C8A012771F93190100DC8154 /* Contants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contants.swift; sourceTree = "<group>"; };
 		C8A012791F931A5100DC8154 /* AccountsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsManager.swift; sourceTree = "<group>"; };
 		C8A0127B1F931D9700DC8154 /* AccountTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableCell.swift; sourceTree = "<group>"; };
+		C8A0127D1F931FF000DC8154 /* AddAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewController.swift; sourceTree = "<group>"; };
 		C8FAE9CC1F926E490035185B /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -252,6 +254,7 @@
 			children = (
 				C8A012751F93136E00DC8154 /* AccountViewController.swift */,
 				C8A0127B1F931D9700DC8154 /* AccountTableCell.swift */,
+				C8A0127D1F931FF000DC8154 /* AddAccountViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 			files = (
 				C87AB1921F91CD3F0010DA00 /* AnyJSONType.swift in Sources */,
 				C8A0127A1F931A5100DC8154 /* AccountsManager.swift in Sources */,
+				C8A0127E1F931FF000DC8154 /* AddAccountViewController.swift in Sources */,
 				C82F5A991F9073FE002079F3 /* ViewController.swift in Sources */,
 				C8A012761F93136E00DC8154 /* AccountViewController.swift in Sources */,
 				C87AB18E1F91BAC40010DA00 /* Feed.swift in Sources */,
