@@ -267,6 +267,7 @@
                         <viewLayoutGuide key="safeArea" id="Lb7-vF-iz7"/>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="8ci-xw-DX1" id="84z-xb-o8U"/>
                         <outlet property="usernameTextfield" destination="TKQ-oZ-C9m" id="j2h-Kr-vAe"/>
                     </connections>
                 </viewController>
