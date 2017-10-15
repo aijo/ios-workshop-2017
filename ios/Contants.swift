@@ -8,4 +8,5 @@
 
 import Foundation
 
-let LOGGED_IN:String = "LOGGED_IN"
+let LOGGED_IN: String = "LOGGED_IN"
+let ACCOUNTS_LIST: String = "ACCOUNTS_LIST"

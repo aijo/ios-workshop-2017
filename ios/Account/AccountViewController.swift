@@ -13,6 +13,8 @@ class AccountViewController: UITableViewController {
     private let ACCOUNTS_SECTION = 0
     private let LOGOUT_SECTION = 1
     
+    private let accountManager = AccountsManager.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Account"
@@ -46,7 +48,7 @@ class AccountViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case ACCOUNTS_SECTION: return 1
+        case ACCOUNTS_SECTION: return accountManager.accounts.count
         case LOGOUT_SECTION: return 1
         default: return 0
         }
@@ -62,8 +64,8 @@ class AccountViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case ACCOUNTS_SECTION:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell", for: indexPath)
-        
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell", for: indexPath) as! AccountTableCell
+            cell.accountLabel.text = accountManager.accounts[indexPath.row]
             return cell
         case LOGOUT_SECTION:
             return tableView.dequeueReusableCell(withIdentifier: "LogoutCell", for: indexPath)
