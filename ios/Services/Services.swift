@@ -21,6 +21,10 @@ class Services {
     let jsonDecoder = JSONDecoder()
     typealias mediaCompletion = (_ feed: Feed?, _ error: Error?) -> Void
     
+    enum ServicesError: Error {
+        case DecodingError
+    }
+    
     func getInstagramFeed(user: String, maxId:String?=nil, completion: @escaping mediaCompletion) {
         var mediaEndpoint = "https://www.instagram.com/\(user)/media/"
         if let maxId = maxId {
@@ -30,9 +34,13 @@ class Services {
         Alamofire.request(mediaEndpoint, method: .get, parameters: nil).responseData { (response) in
             switch response.result {
             case .success(let data):
-                var feed = try! self.jsonDecoder.decode(Feed.self, from: data)
-                feed.username = user
-                completion(feed, nil)
+                do {
+                    var feed = try self.jsonDecoder.decode(Feed.self, from: data)
+                    feed.username = user
+                    completion(feed, nil)
+                } catch {
+                    completion(nil, ServicesError.DecodingError)
+                }
             case .failure(let error):
                 print("Request failed with error: \(error)")
                 completion(nil, error)
