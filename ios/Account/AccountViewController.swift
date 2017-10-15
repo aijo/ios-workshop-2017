@@ -9,7 +9,10 @@
 import UIKit
 
 class AccountViewController: UITableViewController {
-
+    
+    private let ACCOUNTS_SECTION = 0
+    private let LOGOUT_SECTION = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Account"
@@ -33,24 +36,35 @@ class AccountViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        switch section {
+        case ACCOUNTS_SECTION: return 1
+        case LOGOUT_SECTION: return 1
+        default: return 0
+        }
     }
-
-    /*
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case ACCOUNTS_SECTION: return "Accounts"
+        default: return ""
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        switch indexPath.section {
+        case ACCOUNTS_SECTION:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell", for: indexPath)
+        
+            return cell
+        case LOGOUT_SECTION:
+            return tableView.dequeueReusableCell(withIdentifier: "LogoutCell", for: indexPath)
+        default: return UITableViewCell()
+        }
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

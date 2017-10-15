@@ -128,12 +128,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="XlO-Et-gnW">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccountCell" id="XlO-Et-gnW">
                                 <rect key="frame" x="0.0" y="55.333333333333336" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XlO-Et-gnW" id="bVq-8f-A2F">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wjw-e5-igY">
+                                            <rect key="frame" x="16" y="11" width="343" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Wjw-e5-igY" secondAttribute="trailing" constant="8" id="0gk-qk-mHT"/>
+                                        <constraint firstItem="Wjw-e5-igY" firstAttribute="centerY" secondItem="bVq-8f-A2F" secondAttribute="centerY" id="6je-ee-ogu"/>
+                                        <constraint firstItem="Wjw-e5-igY" firstAttribute="leading" secondItem="bVq-8f-A2F" secondAttribute="leadingMargin" constant="8" id="mvN-Kn-P1H"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogoutCell" rowHeight="45" id="O3Y-s0-Qoe">
+                                <rect key="frame" x="0.0" y="99.333333333333343" width="375" height="45"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O3Y-s0-Qoe" id="F6j-ey-QAL">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4oB-uM-Pkg">
+                                            <rect key="frame" x="0.0" y="3" width="375" height="45"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="45" id="lrd-XW-Led"/>
+                                            </constraints>
+                                            <state key="normal" title="Logout"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="4oB-uM-Pkg" firstAttribute="top" secondItem="F6j-ey-QAL" secondAttribute="top" constant="3" id="527-8y-ZvA"/>
+                                        <constraint firstItem="4oB-uM-Pkg" firstAttribute="leading" secondItem="F6j-ey-QAL" secondAttribute="leading" id="NxW-XN-vLD"/>
+                                        <constraint firstAttribute="trailing" secondItem="4oB-uM-Pkg" secondAttribute="trailing" id="oAT-2o-dXS"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
