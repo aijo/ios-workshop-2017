@@ -13,6 +13,7 @@ class ExplorerViewController: UITableViewController {
     private var feeds: [Feed]?
     private var storedOffsets = [Int: CGFloat]()
     private let service = Services.sharedInstance
+    private let accountManager = AccountsManager.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +34,9 @@ class ExplorerViewController: UITableViewController {
     
     fileprivate func prepareData() {
         feeds = [Feed]()
-        loadFeedData(username: "apple")
-        loadFeedData(username: "aijojoe")
+        accountManager.accounts.forEach { [unowned self] (username) in
+            self.loadFeedData(username: username)
+        }
     }
     
     fileprivate func loadFeedData(username: String) {
