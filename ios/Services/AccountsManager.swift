@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class AccountsManager {
     
@@ -18,6 +19,9 @@ class AccountsManager {
     }
     
     private var _accounts: [String]
+    private var observable: BehaviorSubject<[String]>
+    private let disposeBag = DisposeBag()
+    
     var accounts: [String] {
         get { return _accounts }
     }
@@ -28,21 +32,34 @@ class AccountsManager {
         } else {
             _accounts = ["apple"]
         }
+        observable = BehaviorSubject(value:_accounts)
     }
     
     func addAccount(username: String) {
         _accounts.append(username)
         save()
+        observable.on(.next(_accounts))
     }
     
     func removeAccount(username: String) {
         guard username != "apple" else { return }
         _accounts = _accounts.filter { $0 != username }
         save()
+        observable.on(.next(_accounts))
     }
     
     fileprivate func save() {
         UserDefaults.standard.set(_accounts, forKey: ACCOUNTS_LIST)
     }
+    
+    typealias accountSubscribe = (_ accounts: [String]?) -> Void
+    
+    func subscribe(on: @escaping accountSubscribe) {
+        let disposable = observable.subscribe { (event) in
+            on(event.element)
+        }
+        disposable.disposed(by: disposeBag)
+    }
+
     
 }

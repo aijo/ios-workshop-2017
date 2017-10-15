@@ -33,10 +33,15 @@ class ExplorerViewController: UITableViewController {
     }
     
     fileprivate func prepareData() {
-        feeds = [Feed]()
-        accountManager.accounts.forEach { [unowned self] (username) in
-            self.loadFeedData(username: username)
+        accountManager.subscribe { [unowned self] (accounts) in
+            self.feeds = [Feed]()
+            if let accounts = accounts {
+                accounts.forEach { [unowned self] (username) in
+                    self.loadFeedData(username: username)
+                }
+            }
         }
+
     }
     
     fileprivate func loadFeedData(username: String) {
